@@ -13,7 +13,7 @@ class PyscrapydemoPipeline(object):
 
 class BaidustocksInfoPipeline(object):
     def open_spider(self, spider):
-        self.f = open(os.path.abspath('.')+'BaiduStockInfo.txt', 'w')
+        self.f = open(os.path.abspath('.')+'\\BaiduStockInfo.txt', 'w')
 
     def close_spider(self, spider):
         self.f.close()
