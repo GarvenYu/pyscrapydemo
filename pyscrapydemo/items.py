@@ -8,7 +8,8 @@
 import scrapy
 
 
-class PyscrapydemoItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class BookItem(scrapy.Item):
+    """docstring for BookItem"""
+    book_name = scrapy.Field()
+    book_price = scrapy.Field()
+    book_star = scrapy.Field()

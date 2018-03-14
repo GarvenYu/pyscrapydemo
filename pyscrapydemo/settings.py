@@ -65,7 +65,7 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'pyscrapydemo.pipelines.BaidustocksInfoPipeline': 300,
+   'pyscrapydemo.pipelines.BookPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

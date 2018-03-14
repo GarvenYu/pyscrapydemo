@@ -5,10 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import os
-
-class PyscrapydemoPipeline(object):
-    def process_item(self, item, spider):
-        return item
+import re
 
 
 class BaidustocksInfoPipeline(object):
@@ -24,4 +21,18 @@ class BaidustocksInfoPipeline(object):
             self.f.write(line)
         except:
             pass
+        return item
+
+
+class BookPipeline(object):
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        cls.regex = re.compile(r'[A-Z][a-z]+')
+        cls.exchange_rate = 8.8135
+        return cls()
+
+    def process_item(self, item, spider):
+        item['book_star'] = self.regex.findall(item['book_star'])[0] + 'Stars'
+        item['book_price'] = self.exchange_rate * float(item['book_price'][1:])
         return item
