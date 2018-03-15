@@ -13,3 +13,6 @@ class BookItem(scrapy.Item):
     book_name = scrapy.Field()
     book_price = scrapy.Field()
     book_star = scrapy.Field()
+    book_code = scrapy.Field()
+    book_avai = scrapy.Field()
+    book_review = scrapy.Field()

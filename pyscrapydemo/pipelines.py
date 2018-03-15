@@ -25,14 +25,19 @@ class BaidustocksInfoPipeline(object):
 
 
 class BookPipeline(object):
+    star_dict = {
+        'One': '1星',
+        'Two': '2星',
+        'Three': '3星',
+        'Four': '4星',
+        'Five': '5星',
+    }
 
     @classmethod
     def from_crawler(cls, crawler):
-        cls.regex = re.compile(r'[A-Z][a-z]+')
         cls.exchange_rate = 8.8135
         return cls()
 
     def process_item(self, item, spider):
-        item['book_star'] = self.regex.findall(item['book_star'])[0] + 'Stars'
-        item['book_price'] = self.exchange_rate * float(item['book_price'][1:])
+        item['book_star'] = self.star_dict.get(item['book_star'], 'No Star')
         return item
